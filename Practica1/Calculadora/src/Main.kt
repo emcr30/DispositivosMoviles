@@ -34,6 +34,7 @@ fun main(){
     }
 }
 
+//ingresar los números
 fun Operacion(type: String){
     print("Ingrese el primer número: ")
     val num1 = readln().toIntOrNull() ?: run {
@@ -45,9 +46,11 @@ fun Operacion(type: String){
         println("Ingreso no válido. Tiene que ser un número.")
         return
     }
-
+    
+    //realizando las operaciones
     when(type) {
         "suma" -> println(num1 + num2)
         "resta" -> println(num1 - num2)
+        "multiplicacion" -> println(num1 * num2)
     }
 }
