@@ -30,7 +30,7 @@ fun main() {
             jugador == "piedra" && pc == "tijera" ||
                     jugador == "papel" && pc == "piedra" ||
                     jugador == "tijera" && pc == "papel" -> println("¡GANASTE! :D")
-            
+
             //verificar que la eleccion sea válida
             jugador in elegir -> println("¡PERDISTE! :( LA PC ELIGIÓ: $pc")
             //por si no coincide la entrada del jugador

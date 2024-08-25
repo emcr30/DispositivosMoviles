@@ -4,7 +4,7 @@
 // Finalización: 25-08-2024
 
 fun main() {
-    // Control del loop del menú
+    // control del loop del menú
     var calculadora = true
 
     while (calculadora) {
@@ -16,10 +16,10 @@ fun main() {
         println("5. Salir")
         println("Elige una opción del 1 al 5: ")
 
-        // Leer la opción del usuario
+        // leer la opción del usuario
         val opcion = readln().toIntOrNull()
 
-        // Elegir opciones
+        // elegir opciones
         when (opcion) {
             1 -> Operacion("suma")
             2 -> Operacion("resta")
@@ -34,7 +34,7 @@ fun main() {
     }
 }
 
-// Ingresar los números
+// ingresar los números
 fun Operacion(type: String) {
     print("Ingrese el primer número: ")
     val num1 = readln().toDoubleOrNull() ?: run {
@@ -47,7 +47,7 @@ fun Operacion(type: String) {
         return
     }
 
-    // Realizando las operaciones
+    // realizando las operaciones de la calculadora
     when (type) {
         "suma" -> println("RESPUESTA: ${num1 + num2}")
         "resta" -> println("RESPUESTA: ${num1 - num2}")
