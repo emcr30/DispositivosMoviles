@@ -24,8 +24,13 @@ fun main(){
             trys > numGuess -> print("El número es menor\n")
         }
 
-    intentos--
-
+        intentos--
+        //cantidad de intentos y si la respuesta es incorrecta
+        if (intentos > 0){
+            println("Te quedan $intentos intentos")
+        } else {
+            println("PERDISTE :(")
+            println("El número era $numGuess")
+        }
     }
-
 }
