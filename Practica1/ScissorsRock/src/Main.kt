@@ -1,7 +1,7 @@
 // Este código te permite jugar PIEDRA, PAPEL y TIJERA, la computadora decidirá quién ganará aleatoriamente.
 // Evelyn Milagros Chipana Ramos
 // Creación: 24-08-2024
-// Finalización: 24-08-2024
+// Finalización: 25-08-2024
 
 import kotlin.random.Random
 
@@ -15,7 +15,7 @@ fun main() {
         print("*****COMENCEMOS*****\n")
         print("Elige piedra, papel o tijera: ")
         //asegurar que el jugador ingrese datos correctos
-        val jugador = readLine()?.lowercase()
+        val jugador = readln()?.lowercase()
 
         if (jugador == "salir") {
             println("Gracias por jugar. ¡Nos vemos pronto!")
