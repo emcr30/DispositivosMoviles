@@ -32,6 +32,22 @@ fun main(){
             else -> println("Opcion no válida. Elige del 1 al 5")
         }
     }
-
 }
 
+fun Operacion(type: String){
+    print("Ingrese el primer número: ")
+    val num1 = readln().toIntOrNull() ?: run {
+        println("Ingreso no válido. Tiene que ser un número.")
+        return
+    }
+    print("Ingrese el segundo número: ")
+    val num2 = readln().toIntOrNull() ?: run {
+        println("Ingreso no válido. Tiene que ser un número.")
+        return
+    }
+
+    when(type) {
+        "suma" -> println(num1 + num2)
+        "resta" -> println(num1 - num2)
+    }
+}
