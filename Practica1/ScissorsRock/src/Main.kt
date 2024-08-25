@@ -1,6 +1,6 @@
 // Este código te permite jugar PIEDRA, PAPEL y TIJERA, la computadora decidirá quién ganará aleatoriamente.
 // Evelyn Milagros Chipana Ramos
-// Creación: 25-08-2024
+// Creación: 24-08-2024
 // Finalización: 25-08-2024
 
 import kotlin.random.Random
