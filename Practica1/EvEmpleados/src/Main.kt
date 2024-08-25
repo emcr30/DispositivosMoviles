@@ -12,13 +12,13 @@ fun main(){
         print("Ingrese su puntuación (0 a 10): ")
         val puntuacion = readLine()?.toIntOrNull() ?: run {
             println("Puntuación inválida")
-            continue // Vuelve al inicio del bucle
+            continue
         }
 
         print("Ingrese su salario: ")
         val salario = readLine()?.toDoubleOrNull() ?: run {
             println("Salario inválido")
-            continue // Vuelve al inicio del bucle
+            continue
         }
 
         // calcular el rendimiento
@@ -32,7 +32,7 @@ fun main(){
         //calcular sueldo
         val sueldo = if (puntuacion in 0..10) salario * (puntuacion / 10.0) else 0.0
 
-        // Imprimir resultados
+        // imprimir resultados
         println("EL EMPLEADO: $nombre")
         println("NIVEL DE RENDIMIENTO: $rendimiento")
         println("SUELDO DEL MES: $${"%.2f".format(sueldo)}")
@@ -40,7 +40,7 @@ fun main(){
         print("¿Desea continuar? (ingrese 'salir' para terminar): ")
         val continuar = readLine()
         if (continuar.equals("salir", ignoreCase = true)) {
-            break // Salir del bucle
+            break
         }
     }
 }
