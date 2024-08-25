@@ -46,11 +46,12 @@ fun Operacion(type: String){
         println("Ingreso no válido. Tiene que ser un número.")
         return
     }
-    
+
     //realizando las operaciones
     when(type) {
         "suma" -> println(num1 + num2)
         "resta" -> println(num1 - num2)
         "multiplicacion" -> println(num1 * num2)
+        "division" -> println(num1 / num2)
     }
 }
