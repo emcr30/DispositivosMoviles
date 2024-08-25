@@ -9,7 +9,7 @@ fun main() {
     //creacion de un array con las opciones
     val elegir = arrayOf("piedra", "papel", "tijera")
     while (true) {
-        val PC = elegir[Random.nextInt(elegir.size)]
+        val pc = elegir[Random.nextInt(elegir.size)]
         print("-----------------¡A JUGAR! -----------------\n")
         print("NOTA : Escribe 'salir' si quieres abandonar el juego.\n")
         print("*****COMENCEMOS*****\n")
@@ -23,13 +23,13 @@ fun main() {
         }
 
         when {
-            jugador == PC -> println("¡Empate!")
+            jugador == pc -> println("¡Empate!")
             //comprueba que el jugador gana con la eleccion que hizo
-            jugador == "piedra" && PC == "tijera" ||
-                    jugador == "papel" && PC == "piedra" ||
-                    jugador == "tijera" && PC == "papel" -> println("¡GANASTE! :D")
+            jugador == "piedra" && pc == "tijera" ||
+                    jugador == "papel" && pc == "piedra" ||
+                    jugador == "tijera" && pc == "papel" -> println("¡GANASTE! :D")
             //verificar que la eleccion sea válida
-            jugador in elegir -> println("¡PERDISTE! :( LA PC ELIGIÓ: $PC")
+            jugador in elegir -> println("¡PERDISTE! :( LA PC ELIGIÓ: $pc")
             //por si no coincide la entrada del jugador
             else -> println("Opción no válida")
         }
