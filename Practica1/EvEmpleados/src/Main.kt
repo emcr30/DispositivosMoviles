@@ -10,7 +10,7 @@ fun main(){
         val nombre = readLine() ?: "Desconocido"
 
         print("Ingrese su puntuación (0 a 10): ")
-        val puntuacion = readLine()?.toIntOrNull() ?: run {
+        val puntuacion = readLine()?.toIntOrNull() ?: run { //si la entrada es un número válido, para reiniciar el loop
             println("Puntuación inválida")
             continue
         }
@@ -30,7 +30,7 @@ fun main(){
         }
 
         //calcular sueldo
-        val sueldo = if (puntuacion in 0..10) salario * (puntuacion / 10.0) else 0.0
+        val sueldo = if (puntuacion in 0..10) salario * (puntuacion / 10.0) else 0.0 //.0 para calcular en double
 
         // imprimir resultados
         println("EL EMPLEADO: $nombre")
