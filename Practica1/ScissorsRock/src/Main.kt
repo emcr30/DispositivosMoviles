@@ -9,11 +9,13 @@ fun main() {
     //creacion de un array con las opciones
     val elegir = arrayOf("piedra", "papel", "tijera")
     while (true) {
-        val pc = elegir[Random.nextInt(elegir.size)]
+        val pc = elegir[Random.nextInt(elegir.size)] //elegir las opciones de manera aleatoria
+
         print("-----------------¡A JUGAR! -----------------\n")
         print("NOTA : Escribe 'salir' si quieres abandonar el juego.\n")
         print("*****COMENCEMOS*****\n")
         print("Elige piedra, papel o tijera: ")
+
         //asegurar que el jugador ingrese datos correctos
         val jugador = readln()?.lowercase()
 
@@ -28,6 +30,7 @@ fun main() {
             jugador == "piedra" && pc == "tijera" ||
                     jugador == "papel" && pc == "piedra" ||
                     jugador == "tijera" && pc == "papel" -> println("¡GANASTE! :D")
+            
             //verificar que la eleccion sea válida
             jugador in elegir -> println("¡PERDISTE! :( LA PC ELIGIÓ: $pc")
             //por si no coincide la entrada del jugador
