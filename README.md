@@ -14,7 +14,7 @@ Este repositorio servirá como un espacio centralizado para todas las tareas y t
 
 ### Estructura de Archivos
 
-Cada tarea o proyecto se organizará en su propia carpeta, con un archivo `README.md` que detallará el objetivo y los pasos necesarios para ejecutar el proyecto.
+Cada tarea o proyecto se organizará en su propia carpeta para una mejor organización.
 
 
 LETS GO!
