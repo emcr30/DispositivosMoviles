@@ -37,3 +37,50 @@ interface IBiblioteca {
     fun mostrarMaterialesReservados(usuario: Usuario): List<String>
 }
 
+// clase Biblioteca que implementa IBiblioteca
+class Biblioteca : IBiblioteca {
+    private val materialesDisponibles = mutableListOf<Material>()
+    private val usuariosConPrestamos = mutableMapOf<Usuario, MutableList<Material>>()
+
+    override fun registrarMaterial(material: Material) {
+        materialesDisponibles.add(material)
+    }
+
+    override fun registrarUsuario(usuario: Usuario) {
+        if (!usuariosConPrestamos.containsKey(usuario)) {
+            usuariosConPrestamos[usuario] = mutableListOf()
+        }
+    }
+
+    override fun prestarMaterial(usuario: Usuario, material: Material): Boolean {
+        return if (materialesDisponibles.contains(material)) {
+            materialesDisponibles.remove(material)
+            usuariosConPrestamos[usuario]?.add(material)
+            true
+        } else {
+            false
+        }
+    }
+
+    override fun devolverMaterial(usuario: Usuario, material: Material): Boolean {
+        return if (usuariosConPrestamos[usuario]?.contains(material) == true) {
+            usuariosConPrestamos[usuario]?.remove(material)
+            materialesDisponibles.add(material)
+            true
+        } else {
+            false
+        }
+    }
+
+    override fun mostrarMaterialesDisponibles(): List<String> {
+        return materialesDisponibles.map { it.mostrarDetalles() }
+    }
+
+    override fun mostrarMaterialesReservados(usuario: Usuario): List<String> {
+        return usuariosConPrestamos[usuario]?.map { it.mostrarDetalles() } ?: listOf()
+    }
+}
+
+fun main() {
+
+}

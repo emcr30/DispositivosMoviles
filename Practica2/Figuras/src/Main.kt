@@ -2,3 +2,20 @@
 // Evelyn Milagros Chipana Ramos
 // Creación: 01-09-2024
 // Finalización:
+
+
+// clase abstracta Shape
+abstract class Shape {
+    abstract val area: Double
+    abstract val perimeter: Double
+
+    abstract fun calculateArea(): Double
+    abstract fun calculatePerimeter(): Double
+
+    fun printResults() {
+        println("Área: $area")
+        println("Perímetro: $perimeter")
+    }
+}
+
+
