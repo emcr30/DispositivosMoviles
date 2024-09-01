@@ -5,9 +5,9 @@
 
 import java.util.Scanner
 
-//creacion de la clase cuenta bancaria
+//creacion de la clase cuenta
 class CuentaBancaria(private var saldo: Double, private var limiteRetiro: Double) {
-    //implementacion de set y get 
+    //implementacion de set y get
     fun getSaldo(): Double {
         return saldo
     }
