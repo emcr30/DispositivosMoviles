@@ -3,34 +3,30 @@
 // Creación: 01-09-2024
 // Finalización: 01-09-2024
 
-
 import java.util.Scanner
 
-// Clase base abstracta Material
+//clase abstracta con los materiales
 abstract class Material(val titulo: String, val autor: String, val anioPublicacion: Int) {
     abstract fun mostrarDetalles(): String
 }
-
-// Subclase Libro
+//propiedades de los libros
 class Libro(titulo: String, autor: String, anioPublicacion: Int, val genero: String, val numeroPaginas: Int)
     : Material(titulo, autor, anioPublicacion) {
     override fun mostrarDetalles(): String {
         return "Libro: $titulo, Autor: $autor, Año: $anioPublicacion, Género: $genero, Páginas: $numeroPaginas"
     }
 }
-
-// Subclase Revista
+//similar a la clase libro, solo que implementada a la revista
 class Revista(titulo: String, autor: String, anioPublicacion: Int, val issn: String, val volumen: Int, val numero: Int, val editorial: String)
     : Material(titulo, autor, anioPublicacion) {
     override fun mostrarDetalles(): String {
         return "Revista: $titulo, Autor: $autor, Año: $anioPublicacion, ISSN: $issn, Volumen: $volumen, Número: $numero, Editorial: $editorial"
     }
 }
-
-// Data class Usuario
+//propiedades del usuario
 data class Usuario(val nombre: String, val apellido: String, val edad: Int)
 
-// Interfaz IBiblioteca
+//metodos escenciales para la gestión de la biblioteca
 interface IBiblioteca {
     fun registrarMaterial(material: Material)
     fun registrarUsuario(usuario: Usuario)
@@ -40,47 +36,49 @@ interface IBiblioteca {
     fun mostrarMaterialesReservados(usuario: Usuario): List<String>
 }
 
-// Clase Biblioteca que implementa IBiblioteca
+//implementacion de la biblioteca y gestiona prestamos y devoluciones
 class Biblioteca : IBiblioteca {
     private val materialesDisponibles = mutableListOf<Material>()
     private val usuariosConPrestamos = mutableMapOf<Usuario, MutableList<Material>>()
-
+    //metodo para registrar material en la biblioteca
     override fun registrarMaterial(material: Material) {
         materialesDisponibles.add(material)
     }
-
+    //metodo para registrar usuario de la biblioteca
     override fun registrarUsuario(usuario: Usuario) {
         if (!usuariosConPrestamos.containsKey(usuario)) {
             usuariosConPrestamos[usuario] = mutableListOf()
         }
     }
-
+    //metodo para prestamos de la biblioteca
     override fun prestarMaterial(usuario: Usuario, material: Material): Boolean {
-        return if (materialesDisponibles.contains(material)) {
+        if (materialesDisponibles.contains(material)) {
             materialesDisponibles.remove(material)
             usuariosConPrestamos[usuario]?.add(material)
-            true
-        } else {
-            false
+            return true
         }
+        return false
     }
-
+    //metodo para devoluciones de la biblioteca
     override fun devolverMaterial(usuario: Usuario, material: Material): Boolean {
-        return if (usuariosConPrestamos[usuario]?.contains(material) == true) {
+        if (usuariosConPrestamos[usuario]?.contains(material) == true) {
             usuariosConPrestamos[usuario]?.remove(material)
             materialesDisponibles.add(material)
-            true
-        } else {
-            false
+            return true
         }
+        return false
     }
 
     override fun mostrarMaterialesDisponibles(): List<String> {
-        return materialesDisponibles.map { it.mostrarDetalles() }
+        return materialesDisponibles.map { it.mostrarDetalles() } //materiales disponibles
     }
 
     override fun mostrarMaterialesReservados(usuario: Usuario): List<String> {
-        return usuariosConPrestamos[usuario]?.map { it.mostrarDetalles() } ?: listOf()
+        return usuariosConPrestamos[usuario]?.map { it.mostrarDetalles() } ?: listOf() //materiales reservados
+    }
+
+    fun buscarUsuario(nombre: String, apellido: String): Usuario? {
+        return usuariosConPrestamos.keys.find { it.nombre.equals(nombre, ignoreCase = true) && it.apellido.equals(apellido, ignoreCase = true) }
     }
 
     fun buscarMaterialPorTitulo(titulo: String): Material? {
@@ -92,13 +90,12 @@ class Biblioteca : IBiblioteca {
     }
 }
 
-// Función principal para la interacción del usuario
 fun main() {
     val biblioteca = Biblioteca()
     val scanner = Scanner(System.`in`)
 
-    while (true) {
-        println("\n--- Sistema de Gestión de Biblioteca ---")
+    while (true) { //menu del sistema
+        println("\n***** Sistema de Gestión de Biblioteca *****")
         println("1. Registrar Material")
         println("2. Registrar Usuario")
         println("3. Prestar Material")
@@ -107,36 +104,39 @@ fun main() {
         println("6. Mostrar Materiales Reservados por Usuario")
         println("7. Salir")
         print("Seleccione una opción: ")
-
+        //registros de los datos del libro
         when (scanner.nextInt()) {
-            1 -> {
-                // Registrar Material
+            1 -> { //registro de material
                 print("Ingrese tipo de material (libro/revista): ")
                 val tipo = scanner.next()
+                scanner.nextLine()
                 print("Título: ")
-                val titulo = scanner.next()
+                val titulo = scanner.nextLine()
                 print("Autor: ")
-                val autor = scanner.next()
+                val autor = scanner.nextLine()
                 print("Año de Publicación: ")
                 val anio = scanner.nextInt()
 
                 if (tipo.equals("libro", true)) {
+                    scanner.nextLine()
                     print("Género: ")
-                    val genero = scanner.next()
+                    val genero = scanner.nextLine()
                     print("Número de Páginas: ")
                     val paginas = scanner.nextInt()
                     val libro = Libro(titulo, autor, anio, genero, paginas)
                     biblioteca.registrarMaterial(libro)
                     println("Libro registrado con éxito.")
                 } else if (tipo.equals("revista", true)) {
+                    scanner.nextLine()
                     print("ISSN: ")
-                    val issn = scanner.next()
+                    val issn = scanner.nextLine()
                     print("Volumen: ")
                     val volumen = scanner.nextInt()
                     print("Número: ")
                     val numero = scanner.nextInt()
+                    scanner.nextLine()
                     print("Editorial: ")
-                    val editorial = scanner.next()
+                    val editorial = scanner.nextLine()
                     val revista = Revista(titulo, autor, anio, issn, volumen, numero, editorial)
                     biblioteca.registrarMaterial(revista)
                     println("Revista registrada con éxito.")
@@ -145,12 +145,12 @@ fun main() {
                 }
             }
 
-            2 -> {
-                // Registrar Usuario
+            2 -> { //registro de usuarios
+                scanner.nextLine()
                 print("Nombre: ")
-                val nombre = scanner.next()
+                val nombre = scanner.nextLine()
                 print("Apellido: ")
-                val apellido = scanner.next()
+                val apellido = scanner.nextLine()
                 print("Edad: ")
                 val edad = scanner.nextInt()
                 val usuario = Usuario(nombre, apellido, edad)
@@ -158,19 +158,24 @@ fun main() {
                 println("Usuario registrado con éxito.")
             }
 
-            3 -> {
-                // Prestar Material
+            3 -> { //prestamos
+                scanner.nextLine()
                 print("Ingrese su nombre: ")
-                val nombreUsuario = scanner.next()
+                val nombreUsuario = scanner.nextLine()
                 print("Ingrese su apellido: ")
-                val apellidoUsuario = scanner.next()
-                val usuario = Usuario(nombreUsuario, apellidoUsuario, 0)
+                val apellidoUsuario = scanner.nextLine()
+
+                val usuario = biblioteca.buscarUsuario(nombreUsuario, apellidoUsuario)
+                if (usuario == null) {
+                    println("Usuario no encontrado.")
+                    continue
+                }
 
                 println("Materiales disponibles:")
-                biblioteca.mostrarMaterialesDisponibles().forEach { println(it) }
+                biblioteca.mostrarMaterialesDisponibles().forEach { println(it) } //disponibilidad de libros o revistas
 
                 print("Título del material a prestar: ")
-                val tituloMaterial = scanner.next()
+                val tituloMaterial = scanner.nextLine()
 
                 val material = biblioteca.buscarMaterialPorTitulo(tituloMaterial)
                 if (material != null) {
@@ -185,16 +190,21 @@ fun main() {
                 }
             }
 
-            4 -> {
-                // Devolver Material
+            4 -> { //devoluciones
+                scanner.nextLine()
                 print("Ingrese su nombre: ")
-                val nombreUsuario = scanner.next()
+                val nombreUsuario = scanner.nextLine()
                 print("Ingrese su apellido: ")
-                val apellidoUsuario = scanner.next()
-                val usuario = Usuario(nombreUsuario, apellidoUsuario, 0)
+                val apellidoUsuario = scanner.nextLine()
+
+                val usuario = biblioteca.buscarUsuario(nombreUsuario, apellidoUsuario)
+                if (usuario == null) {
+                    println("Usuario no encontrado.")
+                    continue
+                }
 
                 print("Título del material a devolver: ")
-                val tituloMaterial = scanner.next()
+                val tituloMaterial = scanner.nextLine()
 
                 val material = biblioteca.buscarMaterialPrestadoPorTitulo(usuario, tituloMaterial)
                 if (material != null) {
@@ -209,26 +219,34 @@ fun main() {
                 }
             }
 
-            5 -> {
-                // Mostrar Materiales Disponibles
+            5 -> { //disponibilidad de materiales
                 println("Materiales disponibles:")
                 biblioteca.mostrarMaterialesDisponibles().forEach { println(it) }
             }
 
-            6 -> {
-                // Mostrar Materiales Reservados por Usuario
+            6 -> { //reservas de los usuarios
+                scanner.nextLine()
                 print("Ingrese su nombre: ")
-                val nombreUsuario = scanner.next()
+                val nombreUsuario = scanner.nextLine()
                 print("Ingrese su apellido: ")
-                val apellidoUsuario = scanner.next()
-                val usuario = Usuario(nombreUsuario, apellidoUsuario, 0)
+                val apellidoUsuario = scanner.nextLine()
+
+                val usuario = biblioteca.buscarUsuario(nombreUsuario, apellidoUsuario)
+                if (usuario == null) {
+                    println("Usuario no encontrado.")
+                    continue
+                }
 
                 println("Materiales reservados:")
-                biblioteca.mostrarMaterialesReservados(usuario).forEach { println(it) }
+                val reservados = biblioteca.mostrarMaterialesReservados(usuario)
+                if (reservados.isEmpty()) {
+                    println("No tienes materiales reservados.")
+                } else {
+                    reservados.forEach { println(it) }
+                }
             }
 
-            7 -> {
-                // Salir
+            7 -> { //salida
                 println("Saliendo del sistema...")
                 break
             }
@@ -240,3 +258,5 @@ fun main() {
     }
     scanner.close()
 }
+
+
