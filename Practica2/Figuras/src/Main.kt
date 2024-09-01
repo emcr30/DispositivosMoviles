@@ -51,40 +51,49 @@ class Circulo(val radio: Double) : Shape() {
     override fun calcularArea() = Math.PI * radio * radio
     override fun calcularPerimetro() = 2 * Math.PI * radio
 }
-
+//añadiendo el menu
 fun main() {
     val scanner = Scanner(System.`in`)
+    var continuar = true
 
-    println("Seleccione una figura para calcular el área y el perímetro:")
-    println("1. Cuadrado")
-    println("2. Rectángulo")
-    println("3. Círculo")
-    print("Opción: ")
-    val opcion = scanner.nextInt()
+    while (continuar) {
+        println("\nSeleccione una figura para calcular el área y el perímetro:")
+        println("1. Cuadrado")
+        println("2. Rectángulo")
+        println("3. Círculo")
+        println("4. Salir")
+        print("Opción: ")
+        val opcion = scanner.nextInt()
 
-    when (opcion) {
-        1 -> {
-            print("Ingrese el valor del lado del cuadrado: ")
-            val lado = scanner.nextDouble()
-            val cuadrado = Cuadrado(lado)
-            cuadrado.imprimirResultados()
-        }
-        2 -> {
-            print("Ingrese el valor del ancho del rectángulo: ")
-            val ancho = scanner.nextDouble()
-            print("Ingrese el valor del alto del rectángulo: ")
-            val alto = scanner.nextDouble()
-            val rectangulo = Rectangulo(ancho, alto)
-            rectangulo.imprimirResultados()
-        }
-        3 -> {
-            print("Ingrese el valor del radio del círculo: ")
-            val radio = scanner.nextDouble()
-            val circulo = Circulo(radio)
-            circulo.imprimirResultados()
-        }
-        else -> {
-            println("Opción no válida")
+        when (opcion) {
+            1 -> {
+                print("Ingrese el valor del lado del cuadrado: ")
+                val lado = scanner.nextDouble()
+                val cuadrado = Cuadrado(lado)
+                cuadrado.imprimirResultados()
+            }
+            2 -> {
+                print("Ingrese el valor del ancho del rectángulo: ")
+                val ancho = scanner.nextDouble()
+                print("Ingrese el valor del alto del rectángulo: ")
+                val alto = scanner.nextDouble()
+                val rectangulo = Rectangulo(ancho, alto)
+                rectangulo.imprimirResultados()
+            }
+            3 -> {
+                print("Ingrese el valor del radio del círculo: ")
+                val radio = scanner.nextDouble()
+                val circulo = Circulo(radio)
+                circulo.imprimirResultados()
+            }
+            4 -> {
+                continuar = false
+                println("Saliendo del programa...")
+            }
+            else -> {
+                println("Opción no válida")
+            }
         }
     }
 }
+
