@@ -3,6 +3,8 @@
 // Creación: 01-09-2024
 // Finalización: 01-09-2024
 
+import java.util.Scanner
+
 // clase abstracta Shape
 abstract class Shape {
     abstract val area: Double
@@ -51,16 +53,38 @@ class Circulo(val radio: Double) : Shape() {
 }
 
 fun main() {
-    val cuadrado = Cuadrado(4.0)
-    val rectangulo = Rectangulo(4.0, 5.0)
-    val circulo = Circulo(3.0)
+    val scanner = Scanner(System.`in`)
 
-    println("Resultados del Cuadrado:")
-    cuadrado.imprimirResultados()
+    println("Seleccione una figura para calcular el área y el perímetro:")
+    println("1. Cuadrado")
+    println("2. Rectángulo")
+    println("3. Círculo")
+    print("Opción: ")
+    val opcion = scanner.nextInt()
 
-    println("\nResultados del Rectángulo:")
-    rectangulo.imprimirResultados()
-
-    println("\nResultados del Círculo:")
-    circulo.imprimirResultados()
+    when (opcion) {
+        1 -> {
+            print("Ingrese el valor del lado del cuadrado: ")
+            val lado = scanner.nextDouble()
+            val cuadrado = Cuadrado(lado)
+            cuadrado.imprimirResultados()
+        }
+        2 -> {
+            print("Ingrese el valor del ancho del rectángulo: ")
+            val ancho = scanner.nextDouble()
+            print("Ingrese el valor del alto del rectángulo: ")
+            val alto = scanner.nextDouble()
+            val rectangulo = Rectangulo(ancho, alto)
+            rectangulo.imprimirResultados()
+        }
+        3 -> {
+            print("Ingrese el valor del radio del círculo: ")
+            val radio = scanner.nextDouble()
+            val circulo = Circulo(radio)
+            circulo.imprimirResultados()
+        }
+        else -> {
+            println("Opción no válida")
+        }
+    }
 }
