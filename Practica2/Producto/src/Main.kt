@@ -1,7 +1,7 @@
 // Creación de una clase producto con precio y descuento
 // Evelyn Milagros Chipana Ramos
 // Creación: 01-09-2024
-// Finalización:
+// Finalización: 01-09-2024
 
 import java.util.Scanner
 
@@ -43,7 +43,7 @@ fun main() {
 
     println(producto)
 
-    //actualización de datos 
+    //actualización de datos
     println("\n¿Quiere actualizar los valores? (si/no)")
     val respuesta = scanner.next()
 
