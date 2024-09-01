@@ -82,5 +82,28 @@ class Biblioteca : IBiblioteca {
 }
 
 fun main() {
+    val biblioteca = Biblioteca()
 
+    val libro1 = Libro("1984", "George Orwell", 1949, "Distopía", 328)
+    val revista1 = Revista("National Geographic", "Varios", 2023, "0027-9358", 195, 3, "NGM")
+
+    val usuario1 = Usuario("Evelyn", "Ramos", 24)
+
+    biblioteca.registrarMaterial(libro1)
+    biblioteca.registrarMaterial(revista1)
+    biblioteca.registrarUsuario(usuario1)
+
+    println("Materiales disponibles antes del préstamo:")
+    println(biblioteca.mostrarMaterialesDisponibles())
+
+    biblioteca.prestarMaterial(usuario1, libro1)
+    println("\nMateriales disponibles después del préstamo:")
+    println(biblioteca.mostrarMaterialesDisponibles())
+
+    println("\nMateriales reservados por ${usuario1.nombre}:")
+    println(biblioteca.mostrarMaterialesReservados(usuario1))
+
+    biblioteca.devolverMaterial(usuario1, libro1)
+    println("\nMateriales disponibles después de la devolución:")
+    println(biblioteca.mostrarMaterialesDisponibles())
 }

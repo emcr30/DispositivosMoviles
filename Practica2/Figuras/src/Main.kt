@@ -7,14 +7,14 @@
 // clase abstracta Shape
 abstract class Shape {
     abstract val area: Double
-    abstract val perimeter: Double
+    abstract val perimetro: Double
 
     abstract fun calculateArea(): Double
     abstract fun calculatePerimeter(): Double
 
     fun printResults() {
         println("Área: $area")
-        println("Perímetro: $perimeter")
+        println("Perímetro: $perimetro")
     }
 }
 
