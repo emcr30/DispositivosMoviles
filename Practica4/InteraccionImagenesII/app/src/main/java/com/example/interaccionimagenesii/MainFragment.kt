@@ -1,3 +1,6 @@
+//Implementación de un spinner para la elección de imágenes con fragments
+//
+
 package com.example.interaccionimagenesii
 
 import android.os.Bundle
@@ -8,8 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+
 
 class MainFragment : Fragment() {
 
