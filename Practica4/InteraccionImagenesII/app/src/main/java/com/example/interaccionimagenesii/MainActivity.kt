@@ -1,3 +1,8 @@
+// Implementación de un spinner para la elección de imágenes con fragments
+// Evelyn Milagros Chipana Ramos
+// Creación: 22-09-2024
+// Finalización: 22-09-2024
+
 package com.example.interaccionimagenesii
 
 import android.os.Bundle

@@ -1,5 +1,5 @@
 //Implementación de un spinner para la elección de imágenes con fragments
-//
+
 
 package com.example.interaccionimagenesii
 

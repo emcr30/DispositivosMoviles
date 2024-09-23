@@ -3,9 +3,9 @@
     <string name="siguiente">Siguiente</string>
     <string name="image_description">Descripcion</string>
     <string name="next_button_text">Siguiente</string>
-    <string name="SeleccionaImagen">Selecciona una imagen</string>
+    <string name="SeleccionaImagen">Selecciona una imagen from</string>
     <string name="back_button_text">Text</string>
     <string name="Volver">Volver</string>
-    <string name="theErasTour">The Eras Tour</string>
+    <string name="theErasTour">THE ERAS TOUR</string>
 
 </resources>
