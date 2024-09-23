@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ReproduccionMusica</string>
+    <string name="select_audio">reputation</string>
+    <string name="play_button">Reproducir</string>
+    <string name="pause_button">Pausar</string>
+    <string name="back_button">Volver</string>
+    <string name="name_of_song">Nombre de la cancion</string>
+
+</resources>

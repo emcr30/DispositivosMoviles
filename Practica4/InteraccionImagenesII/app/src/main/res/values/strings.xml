@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">InteraccionImagenesII</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="volver">Volver</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next_button_text">Siguiente</string>
+    <string name="Volver">Volver</string>
+</resources>
