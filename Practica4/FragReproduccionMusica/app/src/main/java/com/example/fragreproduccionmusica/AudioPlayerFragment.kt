@@ -31,11 +31,11 @@ class AudioPlayerFragment : Fragment() {
         audioImageView.setImageResource(R.drawable.ttpd)
 
         audioResId = when (audioName) {
-            "Audio 1" -> R.raw.audio1
-            "Audio 2" -> R.raw.audio2
-            "Audio 3" -> R.raw.audio3
-            "Audio 4" -> R.raw.audio4
-            "Audio 5" -> R.raw.audio5
+            "I Can Do It With a Broken Heart" -> R.raw.audio1
+            "imgonnagetyouback" -> R.raw.audio2
+            "loml" -> R.raw.audio3
+            "Fresh Out The Slammer" -> R.raw.audio4
+            "My Boy Only Breaks His Favorite Toys" -> R.raw.audio5
             else -> R.raw.audio1
         }
 
