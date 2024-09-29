@@ -7,13 +7,14 @@
     <string name="stop">Detener</string>
     <string name="select_audio">Selecciona un audio</string>
     <string name="seleccionar">Seleccionar</string>
+    <string name="audio_image">portada\n</string>
 
 
     <string-array name="audios_array">
-        <item>Audio 1</item>
-        <item>Audio 2</item>
-        <item>Audio 3</item>
-        <item>Audio 4</item>
-        <item>Audio 5</item>
+        <item>I Can Do It With a Broken Heart</item>
+        <item>imgonnagetyouback</item>
+        <item>loml</item>
+        <item>Fresh Out The Slammer</item>
+        <item>My Boy Only Breaks His Favorite Toys</item>
     </string-array>
 </resources>

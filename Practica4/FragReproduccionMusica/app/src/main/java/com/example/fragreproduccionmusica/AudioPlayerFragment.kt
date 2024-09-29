@@ -1,23 +1,20 @@
 package com.example.fragreproduccionmusica
 
-
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-
 class AudioPlayerFragment : Fragment() {
-
 
     private lateinit var mediaPlayer: MediaPlayer
     private var isPlaying = false
     private var audioResId: Int = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,12 +22,14 @@ class AudioPlayerFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_audio_player, container, false)
 
-
         val audioName = arguments?.getString("audio_name") ?: "Audio 1"
         val audioTextView = view.findViewById<TextView>(R.id.audioName)
         audioTextView.text = audioName
 
-        //audios seleccionados con su respectivo audio
+        // Cargar la imagen estática
+        val audioImageView: ImageView = view.findViewById(R.id.audioImage)
+        audioImageView.setImageResource(R.drawable.ttpd) // Carga solo una imagen
+
         audioResId = when (audioName) {
             "Audio 1" -> R.raw.audio1
             "Audio 2" -> R.raw.audio2
@@ -40,14 +39,11 @@ class AudioPlayerFragment : Fragment() {
             else -> R.raw.audio1
         }
 
-
         mediaPlayer = MediaPlayer.create(requireContext(), audioResId)
 
-        //botones
         val buttonPlay = view.findViewById<Button>(R.id.buttonPlay)
         val buttonPause = view.findViewById<Button>(R.id.buttonPause)
         val buttonStop = view.findViewById<Button>(R.id.buttonStop)
-
 
         buttonPlay.setOnClickListener {
             if (!isPlaying) {
@@ -56,14 +52,12 @@ class AudioPlayerFragment : Fragment() {
             }
         }
 
-
         buttonPause.setOnClickListener {
             if (isPlaying) {
                 mediaPlayer.pause()
                 isPlaying = false
             }
         }
-
 
         buttonStop.setOnClickListener {
             if (isPlaying) {
@@ -73,10 +67,8 @@ class AudioPlayerFragment : Fragment() {
             }
         }
 
-
         return view
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
