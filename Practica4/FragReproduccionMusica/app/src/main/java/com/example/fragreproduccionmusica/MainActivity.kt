@@ -1,7 +1,7 @@
 // Implementación de fragments en un reproductor de musica
 // Evelyn Milagros Chipana Ramos
 // Creación: 22-09-2024
-// Finalización: 28-09-2024
+// Finalización: 29-09-2024
 
 package com.example.fragreproduccionmusica
 
