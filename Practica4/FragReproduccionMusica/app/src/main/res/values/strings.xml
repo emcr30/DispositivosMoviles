@@ -8,4 +8,12 @@
     <string name="select_audio">Selecciona un audio</string>
     <string name="seleccionar">Seleccionar</string>
 
+
+    <string-array name="audios_array">
+        <item>Audio 1</item>
+        <item>Audio 2</item>
+        <item>Audio 3</item>
+        <item>Audio 4</item>
+        <item>Audio 5</item>
+    </string-array>
 </resources>
