@@ -26,9 +26,9 @@ class AudioPlayerFragment : Fragment() {
         val audioTextView = view.findViewById<TextView>(R.id.audioName)
         audioTextView.text = audioName
 
-        // Cargar la imagen estática
+        // cargar la imagen
         val audioImageView: ImageView = view.findViewById(R.id.audioImage)
-        audioImageView.setImageResource(R.drawable.ttpd) // Carga solo una imagen
+        audioImageView.setImageResource(R.drawable.ttpd)
 
         audioResId = when (audioName) {
             "Audio 1" -> R.raw.audio1
@@ -62,7 +62,7 @@ class AudioPlayerFragment : Fragment() {
         buttonStop.setOnClickListener {
             if (isPlaying) {
                 mediaPlayer.stop()
-                mediaPlayer.prepare() // Reset media player to start again if needed
+                mediaPlayer.prepare()
                 isPlaying = false
             }
         }
