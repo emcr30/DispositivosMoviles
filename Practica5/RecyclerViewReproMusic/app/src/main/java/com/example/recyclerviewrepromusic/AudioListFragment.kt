@@ -17,12 +17,13 @@ class AudioListFragment : Fragment() {
 
     // lista de audios que se mostrará en el RecyclerView
     private val audioList = listOf(
-        Audio("Audio 1", R.drawable.audio1_image, R.raw.audio1, getAudioDuration(R.raw.audio1)),
-        Audio("Audio 2", R.drawable.audio2_image, R.raw.audio2, getAudioDuration(R.raw.audio2)),
-        Audio("Audio 3", R.drawable.audio3_image, R.raw.audio3, getAudioDuration(R.raw.audio3)),
-        Audio("Audio 4", R.drawable.audio4_image, R.raw.audio4, getAudioDuration(R.raw.audio4)),
-        Audio("Audio 5", R.drawable.audio5_image, R.raw.audio5, getAudioDuration(R.raw.audio5))
+        Audio("Audio 1", R.drawable.audio1_image, R.raw.audio1, "3:38"),
+        Audio("Audio 2", R.drawable.audio2_image, R.raw.audio2, "3:45"),
+        Audio("Audio 3", R.drawable.audio3_image, R.raw.audio3, "4:41"),
+        Audio("Audio 4", R.drawable.audio4_image, R.raw.audio4, "3:35"),
+        Audio("Audio 5", R.drawable.audio5_image, R.raw.audio5, "3:28")
     )
+
 
 
     override fun onCreateView(

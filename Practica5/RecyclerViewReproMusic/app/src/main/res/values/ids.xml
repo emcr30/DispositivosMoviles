@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnPlay" type="id">Play</item>
+    <item name="btnPause" type="id">Pause</item>
+    <item name="btnStop" type="id">Stop</item>
+</resources>
