@@ -24,8 +24,6 @@ class AudioListFragment : Fragment() {
         Audio("Audio 5", R.drawable.audio5_image, R.raw.audio5, "3:28")
     )
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,4 +54,5 @@ class AudioListFragment : Fragment() {
         recyclerView.adapter = adapter // asignar el adaptador al RecyclerView
 
         return view
+    }
     }
