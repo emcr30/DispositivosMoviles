@@ -1,59 +1,95 @@
+//Question Fragment
+// Evelyn Milagros Chipana Ramos
+// Creación: 18-10-2024
+// Finalización: 19-10-2024
 package com.example.examenparcial
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [QuestionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QuestionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var currentQuestionIndex = 0
+    private var questionList: ArrayList<Question>? = null
+    private var selectedOption: Int = -1
+
+    private lateinit var questionTextView: TextView
+    private lateinit var questionImageView: ImageView
+    private lateinit var radioGroup: RadioGroup
+    private lateinit var progressBar: ProgressBar
+    private lateinit var submitButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question, container, false)
+        val view = inflater.inflate(R.layout.fragment_question, container, false)
+
+        questionList = Constants.getQuestion()
+
+        questionTextView = view.findViewById(R.id.question_text)
+        questionImageView = view.findViewById(R.id.question_image)
+        radioGroup = view.findViewById(R.id.options_group)
+        progressBar = view.findViewById(R.id.progressBar)
+        submitButton = view.findViewById(R.id.submit_button)
+
+        progressBar.max = questionList?.size ?: 1
+
+        showQuestion()
+
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            selectedOption = when (checkedId) {
+                R.id.option_one -> 1
+                R.id.option_two -> 2
+                R.id.option_three -> 3
+                R.id.option_four -> 4
+                else -> -1
+            }
+        }
+
+        submitButton.setOnClickListener {
+            if (selectedOption != -1) {
+                // Verificar si la opción seleccionada es la correcta
+                val currentQuestion = questionList!![currentQuestionIndex]
+                val isCorrect = selectedOption == currentQuestion.correctOption
+
+                // Crear un bundle para pasar el resultado a AnswerFragment
+                val bundle = Bundle()
+                bundle.putBoolean("isAnswerCorrect", isCorrect)
+
+                // Navegar a AnswerFragment con el bundle
+                findNavController().navigate(R.id.action_questionFragment_to_answerFragment, bundle)
+            } else {
+                Toast.makeText(requireContext(), "Selecciona una opción", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuestionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuestionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun showQuestion() {
+        val currentQuestion = questionList!![currentQuestionIndex]
+
+        questionTextView.text = currentQuestion.question
+
+        if (currentQuestion.image != 0) {
+            questionImageView.setImageResource(currentQuestion.image)
+            questionImageView.visibility = View.VISIBLE
+        } else {
+            questionImageView.visibility = View.GONE
+        }
+
+        radioGroup.clearCheck()
+        view?.findViewById<RadioButton>(R.id.option_one)?.text = currentQuestion.option1
+        view?.findViewById<RadioButton>(R.id.option_two)?.text = currentQuestion.option2
+        view?.findViewById<RadioButton>(R.id.option_three)?.text = currentQuestion.option3
+        view?.findViewById<RadioButton>(R.id.option_four)?.text = currentQuestion.option4
+
+        progressBar.progress = currentQuestionIndex + 1
     }
 }

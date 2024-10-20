@@ -1,60 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="16dp"
-        android:progress="0"
         android:max="5"
-        />
+        android:progress="1" />
 
     <TextView
-        android:id="@+id/tv_progress"
+        android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/preguntaBarra"
-        android:layout_below="@id/progressBar"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        />
-
-    <TextView
-        android:id="@+id/tv_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pregunta_here"
+        android:text="@string/pregunta"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_below="@id/tv_progress"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/question_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
         android:layout_marginTop="16dp"
-        />
+        android:visibility="gone" />
 
     <RadioGroup
-        android:id="@+id/rg_options"
+        android:id="@+id/options_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_question"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        />
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/option_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion1" />
+
+        <RadioButton
+            android:id="@+id/option_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion2" />
+
+        <RadioButton
+            android:id="@+id/option_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion3" />
+
+        <RadioButton
+            android:id="@+id/option_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion4" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/btn_submit"
+        android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/confirmar"
-        android:layout_below="@id/rg_options"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        />
-</RelativeLayout>
+        android:text="@string/siguiente"
+        android:layout_marginTop="24dp" />
+</LinearLayout>

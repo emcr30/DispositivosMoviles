@@ -1,3 +1,8 @@
+//Quiz Parcial
+// Evelyn Milagros Chipana Ramos
+// Creación: 18-10-2024
+// Finalización: 19-10-2024
+
 package com.example.examenparcial
 
 import android.os.Bundle

@@ -27,4 +27,7 @@
         android:name="com.example.examenparcial.AnswerFragment"
         android:label="fragment_answer"
         tools:layout="@layout/fragment_answer" />
+        <action
+            android:id="@+id/action_answerFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
 </navigation>

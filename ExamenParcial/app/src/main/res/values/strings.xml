@@ -4,7 +4,13 @@
     <string name="start_button_text">Comenzar</string>
     <string name="welcome_image_desc">Imagen de bienvenida</string>
     <string name="hello_blank_fragment">holi\n</string>
-    <string name="pregunta_here">Aquí va la pregunta</string>
-    <string name="confirmar">Confirmar</string>
-    <string name="preguntaBarra">Pregunta 1/5</string>
+    <string name="pregunta">¿Cuál es tu pregunta?</string>
+    <string name="opcion1">Opción 1</string>
+    <string name="opcion2">Opción 2</string>
+    <string name="opcion3">Opción 3</string>
+    <string name="opcion4">Opción 4</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="respuesta_correcta">¡Respuesta Correcta!</string>
+    <string name="volver_al_inicio">Volver al inicio</string>
+
 </resources>

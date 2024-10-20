@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="progressBar" type="id">progress</item>
+    <item name="question_text" type="id">textquestion</item>
+    <item name="question_image" type="id">imagequestion</item>
+    <item name="options_group" type="id">optiongroup</item>
+    <item name="option_one" type="id">optionOne</item>
+    <item name="option_two" type="id">optionTwo</item>
+    <item name="option_three" type="id">optionThree</item>
+    <item name="option_four" type="id">optionFour</item>
+    <item name="submit_button" type="id">buttonSummit</item>
+</resources>
