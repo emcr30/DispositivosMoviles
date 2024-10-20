@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExamenParcial</string>
+    <string name="welcome_message">¡Bienvenido al Juego de Preguntas!</string>
+    <string name="start_button_text">Comenzar</string>
+    <string name="welcome_image_desc">Imagen de bienvenida</string>
+    <string name="hello_blank_fragment">holi\n</string>
+    <string name="pregunta_here">Aquí va la pregunta</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="preguntaBarra">Pregunta 1/5</string>
+</resources>
